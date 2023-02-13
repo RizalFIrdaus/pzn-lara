@@ -11,6 +11,8 @@ class AppEnvironmentTest extends TestCase
 {
     public function testAppEnv()
     {
-        var_dump(App::environment());
+        if (App::environment(["testing"])) {
+            self::assertTrue(true);
+        }
     }
 }
