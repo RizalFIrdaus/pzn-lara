@@ -13,6 +13,7 @@ class UnitTest extends TestCase
      */
     public function test_example()
     {
-        $this->assertTrue(true);
+        $result =  array_sum(preg_split("/[^\d]/", "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog"));
+        self::assertEquals(3635, $result);
     }
 }
