@@ -6,6 +6,8 @@ use App\Data\Bar;
 use App\Data\Foo;
 use Tests\TestCase;
 use App\Data\Person;
+use App\Services\HelloService;
+use App\Services\HelloIndonesia;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -80,5 +82,13 @@ class DependencyInjectionTest extends TestCase
         $bar2 = $this->app->make(Bar::class);
 
         self::assertSame($bar, $bar2);
+    }
+
+    public function testCreateClassOfInterface()
+    {
+        $this->app->singleton(HelloService::class, HelloIndonesia::class);
+        $hello = $this->app->make(HelloService::class);
+
+        self::assertEquals("Halo Rizal, Selamat Datang!", $hello->hello("Rizal"));
     }
 }
