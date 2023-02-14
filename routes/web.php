@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/rizal", function () {
+    return "Muhammad Rizal Firdaus";
+});
+
+Route::get("/hello-world", function () {
+    return view("hello.world", ["name" => "Rizal"]);
+});
+
+Route::redirect('/about', '/rizal');
+
+Route::fallback(function () {
+    return "404 Not Found";
+});
