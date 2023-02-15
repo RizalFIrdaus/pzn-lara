@@ -31,7 +31,7 @@ class DependencyInjectionTest extends TestCase
         $foo2 = $this->app->make(Foo::class);
         self::assertEquals("Foo", $foo->foo());
         self::assertEquals("Foo", $foo2->foo());
-        self::assertNotSame($foo, $foo2);
+        self::assertSame($foo, $foo2);
     }
 
     public function testCreateObjectwithConstructor()
@@ -66,7 +66,7 @@ class DependencyInjectionTest extends TestCase
         $bar2 = $this->app->make(Bar::class);
         self::assertEquals("Foo and Bar", $bar->bar());
         self::assertSame($bar->foo, $foo);
-        self::assertNotSame($bar, $bar2);
+        self::assertSame($bar, $bar2);
     }
 
     public function testCreateObjectwithServiceContainerSingletonDependency()

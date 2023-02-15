@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,9 @@ Route::fallback(function () {
 
 Route::get("/hello-indonesia/{name}", [HelloController::class, "hello_indo"]);
 Route::get("/foo-bar", [HelloController::class, "bar"]);
+
+Route::post("/uploads/image", [UploadController::class, "upload"]);
+
+Route::get("/phpinfo", function () {
+    return phpinfo();
+});

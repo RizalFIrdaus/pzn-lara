@@ -17,4 +17,12 @@ class StorageTest extends TestCase
 
         self::assertEquals("Ini adalah local storage", $filesystem->get("file.txt"));
     }
+
+    public function testPublicStorage()
+    {
+        $filesystem = Storage::disk("public");
+        $filesystem->put("test.txt", "Ini test");
+
+        self::assertEquals("Ini test", $filesystem->get("test.txt"));
+    }
 }
