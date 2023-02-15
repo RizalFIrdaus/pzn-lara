@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,6 @@ Route::redirect('/about', '/rizal');
 Route::fallback(function () {
     return "404 Not Found";
 });
+
+Route::get("/hello-indonesia/{name}", [HelloController::class, "hello_indo"]);
+Route::get("/foo-bar", [HelloController::class, "bar"]);
